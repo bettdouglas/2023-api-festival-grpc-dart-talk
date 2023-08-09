@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package events;
+
+service EventService {
+    rpc PostEvent (CreateEventRequest) returns (Event);
+    rpc ListEvents (ListEventsRequest) returns (ListEventsResponse);
+    rpc StreamEvents (StreamEventsRequest) returns (StreamEventsResponse);
+    rpc DeleteEvent (DeleteEventRequest) returns (DeleteEventResponse);
+}
+
+/// create messages ///
+message CreateEventRequest {
+    Event event = 1;
+}
+
+message Event {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+    string location = 4;
+    string date = 5;
+    string time = 6;
+    string image = 7;
+}
+
+/// list messages ///
+message ListEventsRequest {
+    string page_token = 1;
+    int32 page_size = 2;
+}
+
+message ListEventsResponse {
+    repeated Event events = 1;
+    string next_page_token = 2;
+}
+
+/// stream messages ///
+message StreamEventsRequest {
+    string page_token = 1;
+    int32 page_size = 2;
+}
+
+message StreamEventsResponse {
+    Event event = 1;
+}
+
+/// delete messages ///
+message DeleteEventRequest {
+    string id = 1;
+}
+
+message DeleteEventResponse {
+    string id = 1;
+}

@@ -14,6 +14,7 @@ dependencies:
     git:
       url: https://github.com/innoapps-dev/innoapps
       path: packages/inno_database
+  grpc: ^3.2.3
 
 dev_dependencies:
   http: ^0.13.0

@@ -2,8 +2,9 @@ syntax = "proto3";
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
 
-import "user.proto";
+package events;
 
 // Generated according to https://cloud.google.com/apis/design/standard_methods
 service UserService {
@@ -22,6 +23,11 @@ service UserService {
   rpc StreamUsers (StreamUsersRequest) returns (stream StreamUsersResponse);
 }
 
+message User {
+  int32 id = 1;
+  string name = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
 
 message ListUsersRequest {
   // The parent resource name, for example, "shelves/shelf1"

@@ -17,6 +17,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.0"
+  archive:
+    dependency: transitive
+    description:
+      name: archive
+      sha256: "0c8368c9b3f0abbc193b9d6133649a614204b528982bebc7026372d61677ce3a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.7"
   args:
     dependency: "direct main"
     description:
@@ -57,6 +65,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
+  clock:
+    dependency: transitive
+    description:
+      name: clock
+      sha256: cb6d7f03e1de671e34607e909a7213e31d7752be4fb66a86d29fe1eb14bfb5cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   collection:
     dependency: transitive
     description:
@@ -113,6 +129,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.0"
+  fixnum:
+    dependency: transitive
+    description:
+      name: fixnum
+      sha256: "25517a4deb0c03aa0f32fd12db525856438902d9c16536311e76cdc57b31d7d1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   fpdart:
     dependency: transitive
     description:
@@ -145,6 +169,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  googleapis_auth:
+    dependency: transitive
+    description:
+      name: googleapis_auth
+      sha256: af7c3a3edf9d0de2e1e0a77e994fae0a581c525fa7012af4fa0d4a52ed9484da
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.1"
+  grpc:
+    dependency: "direct main"
+    description:
+      name: grpc
+      sha256: "220ffb2218288f4e7dea487242e08b9c6277596d9b6f3f10ba50be96771a032d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.3"
   http:
     dependency: "direct dev"
     description:
@@ -153,6 +193,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.6"
+  http2:
+    dependency: transitive
+    description:
+      name: http2
+      sha256: "38db0c4aa9f1cd238a5d2e86aa0cc7cc91c77e0c6c94ba64bbe85e4ff732a952"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
   http_methods:
     dependency: transitive
     description:
@@ -291,6 +339,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.1"
+  pointycastle:
+    dependency: transitive
+    description:
+      name: pointycastle
+      sha256: "7c1e5f0d23c9016c5bbd8b1473d0d3fb3fc851b876046039509e18e0c7485f2c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.7.3"
   pool:
     dependency: transitive
     description:
@@ -316,6 +372,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.6"
+  protobuf:
+    dependency: transitive
+    description:
+      name: protobuf
+      sha256: "4034a02b7e231e7e60bff30a8ac13a7347abfdac0798595fae0b90a3f0afe759"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   pub_semver:
     dependency: transitive
     description:
