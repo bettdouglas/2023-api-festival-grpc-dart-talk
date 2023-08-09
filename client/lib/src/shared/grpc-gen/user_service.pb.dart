@@ -268,27 +268,22 @@ class GetUserRequest extends $pb.GeneratedMessage {
 
 class CreateUserRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateUserRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'events'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'parent')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId')
-    ..aOM<User>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'user', subBuilder: User.create)
+    ..aOM<User>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'user', subBuilder: User.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'password')
     ..hasRequiredFields = false
   ;
 
   CreateUserRequest._() : super();
   factory CreateUserRequest({
-    $core.String? parent,
-    $core.String? userId,
     User? user,
+    $core.String? password,
   }) {
     final _result = create();
-    if (parent != null) {
-      _result.parent = parent;
-    }
-    if (userId != null) {
-      _result.userId = userId;
-    }
     if (user != null) {
       _result.user = user;
+    }
+    if (password != null) {
+      _result.password = password;
     }
     return _result;
   }
@@ -314,33 +309,24 @@ class CreateUserRequest extends $pb.GeneratedMessage {
   static CreateUserRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get parent => $_getSZ(0);
+  User get user => $_getN(0);
   @$pb.TagNumber(1)
-  set parent($core.String v) { $_setString(0, v); }
+  set user(User v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasParent() => $_has(0);
+  $core.bool hasUser() => $_has(0);
   @$pb.TagNumber(1)
-  void clearParent() => clearField(1);
+  void clearUser() => clearField(1);
+  @$pb.TagNumber(1)
+  User ensureUser() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $core.String get userId => $_getSZ(1);
+  $core.String get password => $_getSZ(1);
   @$pb.TagNumber(2)
-  set userId($core.String v) { $_setString(1, v); }
+  set password($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasUserId() => $_has(1);
+  $core.bool hasPassword() => $_has(1);
   @$pb.TagNumber(2)
-  void clearUserId() => clearField(2);
-
-  @$pb.TagNumber(3)
-  User get user => $_getN(2);
-  @$pb.TagNumber(3)
-  set user(User v) { setField(3, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasUser() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearUser() => clearField(3);
-  @$pb.TagNumber(3)
-  User ensureUser() => $_ensure(2);
+  void clearPassword() => clearField(2);
 }
 
 class UpdateUserRequest extends $pb.GeneratedMessage {

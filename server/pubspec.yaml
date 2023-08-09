@@ -10,18 +10,14 @@ dependencies:
   args: ^2.3.0
   shelf: ^1.4.0
   shelf_router: ^1.1.0
-  inno_database:
-    git:
-      url: https://github.com/innoapps-dev/innoapps
-      path: packages/inno_database
   grpc: ^3.2.3
+  dotenv: ^4.1.0
+  dbcrypt: ^2.0.0
+  jose: ^0.3.4
+  protobuf: ^3.0.0
 
 dev_dependencies:
   http: ^0.13.0
   lints: ^2.0.0
   test: ^1.21.0
 
-dependency_overrides:
-  postgres:
-    git:
-      url: https://github.com/isoos/postgresql-dart

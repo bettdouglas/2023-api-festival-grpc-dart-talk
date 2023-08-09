@@ -57,14 +57,13 @@ final $typed_data.Uint8List getUserRequestDescriptor = $convert.base64Decode('Cg
 const CreateUserRequest$json = const {
   '1': 'CreateUserRequest',
   '2': const [
-    const {'1': 'parent', '3': 1, '4': 1, '5': 9, '10': 'parent'},
-    const {'1': 'user_id', '3': 2, '4': 1, '5': 9, '10': 'userId'},
-    const {'1': 'user', '3': 3, '4': 1, '5': 11, '6': '.events.User', '10': 'user'},
+    const {'1': 'user', '3': 1, '4': 1, '5': 11, '6': '.events.User', '10': 'user'},
+    const {'1': 'password', '3': 2, '4': 1, '5': 9, '10': 'password'},
   ],
 };
 
 /// Descriptor for `CreateUserRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createUserRequestDescriptor = $convert.base64Decode('ChFDcmVhdGVVc2VyUmVxdWVzdBIWCgZwYXJlbnQYASABKAlSBnBhcmVudBIXCgd1c2VyX2lkGAIgASgJUgZ1c2VySWQSIAoEdXNlchgDIAEoCzIMLmV2ZW50cy5Vc2VyUgR1c2Vy');
+final $typed_data.Uint8List createUserRequestDescriptor = $convert.base64Decode('ChFDcmVhdGVVc2VyUmVxdWVzdBIgCgR1c2VyGAEgASgLMgwuZXZlbnRzLlVzZXJSBHVzZXISGgoIcGFzc3dvcmQYAiABKAlSCHBhc3N3b3Jk');
 @$core.Deprecated('Use updateUserRequestDescriptor instead')
 const UpdateUserRequest$json = const {
   '1': 'UpdateUserRequest',

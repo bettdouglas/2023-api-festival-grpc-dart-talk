@@ -1,0 +1,1 @@
+./client-protoc.sh && ./server-protoc.sh
