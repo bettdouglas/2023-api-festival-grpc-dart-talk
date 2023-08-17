@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:grpc_streaming/src/auth/provider/auth_state_notifier.dart';
-import 'package:grpc_streaming/src/auth/sign_in/view/sign_in_page.dart';
+import 'package:grpc_streaming/src/quotes/filter_quotes_page.dart';
+import 'package:grpc_streaming/src/quotes/get_quotes_page.dart';
 import 'package:grpc_streaming/src/quotes/list_quotes_page.dart';
+import 'package:grpc_streaming/src/quotes/stream_quotes_page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -36,18 +37,35 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final authState = ref.watch(authStateProvider);
-    return authState.when(
-      loading: () => const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('gRPC Demo'),
+          bottom: const TabBar(
+            tabs: [
+              Tab(
+                text: 'Unary Call',
+              ),
+              Tab(
+                text: 'Client Streaming',
+              ),
+              Tab(
+                text: 'Server Streaming',
+              ),
+              Tab(
+                text: 'Bidirectional Streaming',
+              ),
+            ],
+          ),
         ),
-      ),
-      authenticated: (user) => const ListQuotesPage(),
-      unauthenticated: () => const SignInPage(),
-      error: (error) => const Scaffold(
-        body: Center(
-          child: Text('Error'),
+        body: const TabBarView(
+          children: [
+            GetQuotePage(),
+            ListQuotesPage(),
+            StreamQuotesPage(),
+            FilterQuotesPage(),
+          ],
         ),
       ),
     );

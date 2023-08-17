@@ -16,8 +16,22 @@ class ListQuotesPage extends ConsumerWidget {
         title: const Text('Quotes List'),
       ),
       body: quotesAsyncValue.map(
-        data: (data) => QuotesListView(quotes: data.value),
-        error: (error) => ErrorMessageWidget(error.toString()),
+        data: (data) => Column(
+          children: [
+            Expanded(child: QuotesListView(quotes: data.value)),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () => ref.invalidate(quotesProvider),
+                child: const Text('Refresh Quotes List'),
+              ),
+            ),
+          ],
+        ),
+        error: (error) => ErrorMessageWidgetWithRetry(
+          error.toString(),
+          onRetry: () => ref.invalidate(quotesProvider),
+        ),
         loading: (_) => const Center(
           child: CircularProgressIndicator.adaptive(),
         ),

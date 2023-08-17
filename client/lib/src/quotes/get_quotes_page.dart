@@ -49,7 +49,10 @@ class GetQuotePage extends ConsumerWidget {
             ),
           ),
         ),
-        error: (error) => ErrorMessageWidget(error.toString()),
+        error: (error) => ErrorMessageWidgetWithRetry(
+          error.toString(),
+          onRetry: () => ref.refresh(getQuoteProvider),
+        ),
         loading: (loading) => const Center(
           child: CircularProgressIndicator.adaptive(),
         ),

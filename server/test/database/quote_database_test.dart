@@ -1,4 +1,4 @@
-import 'package:grpg_streaming/src/services/quote_service.dart';
+import 'package:grpg_streaming/src/database/quotes_database.dart';
 import 'package:test/test.dart';
 
 void main() {
