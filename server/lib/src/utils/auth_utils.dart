@@ -4,8 +4,8 @@ import 'package:jose/jose.dart';
 
 final dotEnv = DotEnv(includePlatformEnvironment: true)..load(['.env']);
 
-String createJwt(
-  Map<String, String> claims, {
+String createJwt({
+  required Map<String, String> claims,
   Duration expiry = const Duration(days: 2),
 }) {
   final secretKey = dotEnv.getOrElse(

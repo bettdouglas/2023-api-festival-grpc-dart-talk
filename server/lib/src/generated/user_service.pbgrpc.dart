@@ -25,10 +25,12 @@ class UserServiceClient extends $grpc.Client {
       '/events.UserService/GetUser',
       ($0.GetUserRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.User.fromBuffer(value));
-  static final _$createUser = $grpc.ClientMethod<$0.CreateUserRequest, $0.User>(
-      '/events.UserService/CreateUser',
-      ($0.CreateUserRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.User.fromBuffer(value));
+  static final _$createUser =
+      $grpc.ClientMethod<$0.CreateUserRequest, $0.CreateUserResponse>(
+          '/events.UserService/CreateUser',
+          ($0.CreateUserRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.CreateUserResponse.fromBuffer(value));
   static final _$updateUser = $grpc.ClientMethod<$0.UpdateUserRequest, $0.User>(
       '/events.UserService/UpdateUser',
       ($0.UpdateUserRequest value) => value.writeToBuffer(),
@@ -50,6 +52,10 @@ class UserServiceClient extends $grpc.Client {
           ($0.StreamUsersRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.StreamUsersResponse.fromBuffer(value));
+  static final _$login = $grpc.ClientMethod<$0.LoginRequest, $0.LoginResponse>(
+      '/events.UserService/Login',
+      ($0.LoginRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.LoginResponse.fromBuffer(value));
 
   UserServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -67,7 +73,8 @@ class UserServiceClient extends $grpc.Client {
     return $createUnaryCall(_$getUser, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.User> createUser($0.CreateUserRequest request,
+  $grpc.ResponseFuture<$0.CreateUserResponse> createUser(
+      $0.CreateUserRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createUser, request, options: options);
   }
@@ -97,6 +104,11 @@ class UserServiceClient extends $grpc.Client {
         _$streamUsers, $async.Stream.fromIterable([request]),
         options: options);
   }
+
+  $grpc.ResponseFuture<$0.LoginResponse> login($0.LoginRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$login, request, options: options);
+  }
 }
 
 abstract class UserServiceBase extends $grpc.Service {
@@ -117,13 +129,13 @@ abstract class UserServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.GetUserRequest.fromBuffer(value),
         ($0.User value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.CreateUserRequest, $0.User>(
+    $addMethod($grpc.ServiceMethod<$0.CreateUserRequest, $0.CreateUserResponse>(
         'CreateUser',
         createUser_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.CreateUserRequest.fromBuffer(value),
-        ($0.User value) => value.writeToBuffer()));
+        ($0.CreateUserResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.UpdateUserRequest, $0.User>(
         'UpdateUser',
         updateUser_Pre,
@@ -154,6 +166,13 @@ abstract class UserServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $0.StreamUsersRequest.fromBuffer(value),
             ($0.StreamUsersResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.LoginRequest, $0.LoginResponse>(
+        'Login',
+        login_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.LoginRequest.fromBuffer(value),
+        ($0.LoginResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.ListUsersResponse> listUsers_Pre($grpc.ServiceCall call,
@@ -166,7 +185,7 @@ abstract class UserServiceBase extends $grpc.Service {
     return getUser(call, await request);
   }
 
-  $async.Future<$0.User> createUser_Pre($grpc.ServiceCall call,
+  $async.Future<$0.CreateUserResponse> createUser_Pre($grpc.ServiceCall call,
       $async.Future<$0.CreateUserRequest> request) async {
     return createUser(call, await request);
   }
@@ -191,11 +210,16 @@ abstract class UserServiceBase extends $grpc.Service {
     yield* streamUsers(call, await request);
   }
 
+  $async.Future<$0.LoginResponse> login_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.LoginRequest> request) async {
+    return login(call, await request);
+  }
+
   $async.Future<$0.ListUsersResponse> listUsers(
       $grpc.ServiceCall call, $0.ListUsersRequest request);
   $async.Future<$0.User> getUser(
       $grpc.ServiceCall call, $0.GetUserRequest request);
-  $async.Future<$0.User> createUser(
+  $async.Future<$0.CreateUserResponse> createUser(
       $grpc.ServiceCall call, $0.CreateUserRequest request);
   $async.Future<$0.User> updateUser(
       $grpc.ServiceCall call, $0.UpdateUserRequest request);
@@ -205,4 +229,6 @@ abstract class UserServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.StreamUserRequest request);
   $async.Stream<$0.StreamUsersResponse> streamUsers(
       $grpc.ServiceCall call, $0.StreamUsersRequest request);
+  $async.Future<$0.LoginResponse> login(
+      $grpc.ServiceCall call, $0.LoginRequest request);
 }

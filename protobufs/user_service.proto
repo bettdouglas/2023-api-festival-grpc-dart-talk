@@ -12,7 +12,7 @@ service UserService {
 
   rpc GetUser(GetUserRequest) returns (User) {}
 
-  rpc CreateUser(CreateUserRequest) returns (User) {}
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
 
   rpc UpdateUser(UpdateUserRequest) returns (User) {}
 
@@ -57,6 +57,11 @@ message CreateUserRequest {
   string password = 2;
 }
 
+message CreateUserResponse {
+  User user = 1;
+  string access_token = 2;
+}
+
 message UpdateUserRequest {
   // The user resource which replaces the resource on the server.
   User user = 1;
@@ -93,5 +98,6 @@ message LoginRequest {
 }
 
 message LoginResponse {
-  string token = 1;
+  User user = 1;
+  string accessToken = 2;
 }

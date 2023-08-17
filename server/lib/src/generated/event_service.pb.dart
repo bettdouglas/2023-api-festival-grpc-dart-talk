@@ -9,6 +9,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'google/protobuf/timestamp.pb.dart' as $2;
+
 class CreateEventRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateEventRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'events'), createEmptyInstance: create)
     ..aOM<Event>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'event', subBuilder: Event.create)
@@ -58,26 +60,73 @@ class CreateEventRequest extends $pb.GeneratedMessage {
   Event ensureEvent() => $_ensure(0);
 }
 
+class GetEventRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetEventRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'events'), createEmptyInstance: create)
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  GetEventRequest._() : super();
+  factory GetEventRequest({
+    $core.int? id,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    return _result;
+  }
+  factory GetEventRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetEventRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetEventRequest clone() => GetEventRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetEventRequest copyWith(void Function(GetEventRequest) updates) => super.copyWith((message) => updates(message as GetEventRequest)) as GetEventRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetEventRequest create() => GetEventRequest._();
+  GetEventRequest createEmptyInstance() => create();
+  static $pb.PbList<GetEventRequest> createRepeated() => $pb.PbList<GetEventRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetEventRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetEventRequest>(create);
+  static GetEventRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get id => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set id($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+}
+
 class Event extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Event', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'events'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'title')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'location')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'date')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'time')
+    ..aOM<$2.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'time', subBuilder: $2.Timestamp.create)
+    ..aOM<$2.Timestamp>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', subBuilder: $2.Timestamp.create)
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'image')
     ..hasRequiredFields = false
   ;
 
   Event._() : super();
   factory Event({
-    $core.String? id,
+    $core.int? id,
     $core.String? title,
     $core.String? description,
     $core.String? location,
-    $core.String? date,
-    $core.String? time,
+    $2.Timestamp? time,
+    $2.Timestamp? createdAt,
     $core.String? image,
   }) {
     final _result = create();
@@ -93,11 +142,11 @@ class Event extends $pb.GeneratedMessage {
     if (location != null) {
       _result.location = location;
     }
-    if (date != null) {
-      _result.date = date;
-    }
     if (time != null) {
       _result.time = time;
+    }
+    if (createdAt != null) {
+      _result.createdAt = createdAt;
     }
     if (image != null) {
       _result.image = image;
@@ -126,9 +175,9 @@ class Event extends $pb.GeneratedMessage {
   static Event? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
+  $core.int get id => $_getIZ(0);
   @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
+  set id($core.int v) { $_setSignedInt32(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
@@ -162,22 +211,26 @@ class Event extends $pb.GeneratedMessage {
   void clearLocation() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get date => $_getSZ(4);
+  $2.Timestamp get time => $_getN(4);
   @$pb.TagNumber(5)
-  set date($core.String v) { $_setString(4, v); }
+  set time($2.Timestamp v) { setField(5, v); }
   @$pb.TagNumber(5)
-  $core.bool hasDate() => $_has(4);
+  $core.bool hasTime() => $_has(4);
   @$pb.TagNumber(5)
-  void clearDate() => clearField(5);
+  void clearTime() => clearField(5);
+  @$pb.TagNumber(5)
+  $2.Timestamp ensureTime() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  $core.String get time => $_getSZ(5);
+  $2.Timestamp get createdAt => $_getN(5);
   @$pb.TagNumber(6)
-  set time($core.String v) { $_setString(5, v); }
+  set createdAt($2.Timestamp v) { setField(6, v); }
   @$pb.TagNumber(6)
-  $core.bool hasTime() => $_has(5);
+  $core.bool hasCreatedAt() => $_has(5);
   @$pb.TagNumber(6)
-  void clearTime() => clearField(6);
+  void clearCreatedAt() => clearField(6);
+  @$pb.TagNumber(6)
+  $2.Timestamp ensureCreatedAt() => $_ensure(5);
 
   @$pb.TagNumber(7)
   $core.String get image => $_getSZ(6);
@@ -368,17 +421,17 @@ class StreamEventsRequest extends $pb.GeneratedMessage {
 
 class StreamEventsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'StreamEventsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'events'), createEmptyInstance: create)
-    ..aOM<Event>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'event', subBuilder: Event.create)
+    ..pc<Event>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'events', $pb.PbFieldType.PM, subBuilder: Event.create)
     ..hasRequiredFields = false
   ;
 
   StreamEventsResponse._() : super();
   factory StreamEventsResponse({
-    Event? event,
+    $core.Iterable<Event>? events,
   }) {
     final _result = create();
-    if (event != null) {
-      _result.event = event;
+    if (events != null) {
+      _result.events.addAll(events);
     }
     return _result;
   }
@@ -404,26 +457,18 @@ class StreamEventsResponse extends $pb.GeneratedMessage {
   static StreamEventsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  Event get event => $_getN(0);
-  @$pb.TagNumber(1)
-  set event(Event v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasEvent() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearEvent() => clearField(1);
-  @$pb.TagNumber(1)
-  Event ensureEvent() => $_ensure(0);
+  $core.List<Event> get events => $_getList(0);
 }
 
 class DeleteEventRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeleteEventRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'events'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
   DeleteEventRequest._() : super();
   factory DeleteEventRequest({
-    $core.String? id,
+    $core.int? id,
   }) {
     final _result = create();
     if (id != null) {
@@ -453,9 +498,9 @@ class DeleteEventRequest extends $pb.GeneratedMessage {
   static DeleteEventRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
+  $core.int get id => $_getIZ(0);
   @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
+  set id($core.int v) { $_setSignedInt32(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
@@ -464,13 +509,13 @@ class DeleteEventRequest extends $pb.GeneratedMessage {
 
 class DeleteEventResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeleteEventResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'events'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
   DeleteEventResponse._() : super();
   factory DeleteEventResponse({
-    $core.String? id,
+    $core.int? id,
   }) {
     final _result = create();
     if (id != null) {
@@ -500,9 +545,9 @@ class DeleteEventResponse extends $pb.GeneratedMessage {
   static DeleteEventResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
+  $core.int get id => $_getIZ(0);
   @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
+  set id($core.int v) { $_setSignedInt32(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)

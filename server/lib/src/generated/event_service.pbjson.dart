@@ -18,22 +18,32 @@ const CreateEventRequest$json = const {
 
 /// Descriptor for `CreateEventRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createEventRequestDescriptor = $convert.base64Decode('ChJDcmVhdGVFdmVudFJlcXVlc3QSIwoFZXZlbnQYASABKAsyDS5ldmVudHMuRXZlbnRSBWV2ZW50');
+@$core.Deprecated('Use getEventRequestDescriptor instead')
+const GetEventRequest$json = const {
+  '1': 'GetEventRequest',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `GetEventRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getEventRequestDescriptor = $convert.base64Decode('Cg9HZXRFdmVudFJlcXVlc3QSDgoCaWQYASABKAVSAmlk');
 @$core.Deprecated('Use eventDescriptor instead')
 const Event$json = const {
   '1': 'Event',
   '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
     const {'1': 'title', '3': 2, '4': 1, '5': 9, '10': 'title'},
     const {'1': 'description', '3': 3, '4': 1, '5': 9, '10': 'description'},
     const {'1': 'location', '3': 4, '4': 1, '5': 9, '10': 'location'},
-    const {'1': 'date', '3': 5, '4': 1, '5': 9, '10': 'date'},
-    const {'1': 'time', '3': 6, '4': 1, '5': 9, '10': 'time'},
+    const {'1': 'time', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'time'},
     const {'1': 'image', '3': 7, '4': 1, '5': 9, '10': 'image'},
+    const {'1': 'created_at', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
   ],
 };
 
 /// Descriptor for `Event`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eventDescriptor = $convert.base64Decode('CgVFdmVudBIOCgJpZBgBIAEoCVICaWQSFAoFdGl0bGUYAiABKAlSBXRpdGxlEiAKC2Rlc2NyaXB0aW9uGAMgASgJUgtkZXNjcmlwdGlvbhIaCghsb2NhdGlvbhgEIAEoCVIIbG9jYXRpb24SEgoEZGF0ZRgFIAEoCVIEZGF0ZRISCgR0aW1lGAYgASgJUgR0aW1lEhQKBWltYWdlGAcgASgJUgVpbWFnZQ==');
+final $typed_data.Uint8List eventDescriptor = $convert.base64Decode('CgVFdmVudBIOCgJpZBgBIAEoBVICaWQSFAoFdGl0bGUYAiABKAlSBXRpdGxlEiAKC2Rlc2NyaXB0aW9uGAMgASgJUgtkZXNjcmlwdGlvbhIaCghsb2NhdGlvbhgEIAEoCVIIbG9jYXRpb24SLgoEdGltZRgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSBHRpbWUSFAoFaW1hZ2UYByABKAlSBWltYWdlEjkKCmNyZWF0ZWRfYXQYBiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQ=');
 @$core.Deprecated('Use listEventsRequestDescriptor instead')
 const ListEventsRequest$json = const {
   '1': 'ListEventsRequest',
@@ -71,29 +81,29 @@ final $typed_data.Uint8List streamEventsRequestDescriptor = $convert.base64Decod
 const StreamEventsResponse$json = const {
   '1': 'StreamEventsResponse',
   '2': const [
-    const {'1': 'event', '3': 1, '4': 1, '5': 11, '6': '.events.Event', '10': 'event'},
+    const {'1': 'events', '3': 1, '4': 3, '5': 11, '6': '.events.Event', '10': 'events'},
   ],
 };
 
 /// Descriptor for `StreamEventsResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List streamEventsResponseDescriptor = $convert.base64Decode('ChRTdHJlYW1FdmVudHNSZXNwb25zZRIjCgVldmVudBgBIAEoCzINLmV2ZW50cy5FdmVudFIFZXZlbnQ=');
+final $typed_data.Uint8List streamEventsResponseDescriptor = $convert.base64Decode('ChRTdHJlYW1FdmVudHNSZXNwb25zZRIlCgZldmVudHMYASADKAsyDS5ldmVudHMuRXZlbnRSBmV2ZW50cw==');
 @$core.Deprecated('Use deleteEventRequestDescriptor instead')
 const DeleteEventRequest$json = const {
   '1': 'DeleteEventRequest',
   '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
   ],
 };
 
 /// Descriptor for `DeleteEventRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List deleteEventRequestDescriptor = $convert.base64Decode('ChJEZWxldGVFdmVudFJlcXVlc3QSDgoCaWQYASABKAlSAmlk');
+final $typed_data.Uint8List deleteEventRequestDescriptor = $convert.base64Decode('ChJEZWxldGVFdmVudFJlcXVlc3QSDgoCaWQYASABKAVSAmlk');
 @$core.Deprecated('Use deleteEventResponseDescriptor instead')
 const DeleteEventResponse$json = const {
   '1': 'DeleteEventResponse',
   '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
   ],
 };
 
 /// Descriptor for `DeleteEventResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List deleteEventResponseDescriptor = $convert.base64Decode('ChNEZWxldGVFdmVudFJlc3BvbnNlEg4KAmlkGAEgASgJUgJpZA==');
+final $typed_data.Uint8List deleteEventResponseDescriptor = $convert.base64Decode('ChNEZWxldGVFdmVudFJlc3BvbnNlEg4KAmlkGAEgASgFUgJpZA==');

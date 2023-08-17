@@ -64,6 +64,17 @@ const CreateUserRequest$json = const {
 
 /// Descriptor for `CreateUserRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createUserRequestDescriptor = $convert.base64Decode('ChFDcmVhdGVVc2VyUmVxdWVzdBIgCgR1c2VyGAEgASgLMgwuZXZlbnRzLlVzZXJSBHVzZXISGgoIcGFzc3dvcmQYAiABKAlSCHBhc3N3b3Jk');
+@$core.Deprecated('Use createUserResponseDescriptor instead')
+const CreateUserResponse$json = const {
+  '1': 'CreateUserResponse',
+  '2': const [
+    const {'1': 'user', '3': 1, '4': 1, '5': 11, '6': '.events.User', '10': 'user'},
+    const {'1': 'access_token', '3': 2, '4': 1, '5': 9, '10': 'accessToken'},
+  ],
+};
+
+/// Descriptor for `CreateUserResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List createUserResponseDescriptor = $convert.base64Decode('ChJDcmVhdGVVc2VyUmVzcG9uc2USIAoEdXNlchgBIAEoCzIMLmV2ZW50cy5Vc2VyUgR1c2VyEiEKDGFjY2Vzc190b2tlbhgCIAEoCVILYWNjZXNzVG9rZW4=');
 @$core.Deprecated('Use updateUserRequestDescriptor instead')
 const UpdateUserRequest$json = const {
   '1': 'UpdateUserRequest',
@@ -125,3 +136,25 @@ const StreamUsersResponse$json = const {
 
 /// Descriptor for `StreamUsersResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List streamUsersResponseDescriptor = $convert.base64Decode('ChNTdHJlYW1Vc2Vyc1Jlc3BvbnNlEiIKBXVzZXJzGAEgAygLMgwuZXZlbnRzLlVzZXJSBXVzZXJz');
+@$core.Deprecated('Use loginRequestDescriptor instead')
+const LoginRequest$json = const {
+  '1': 'LoginRequest',
+  '2': const [
+    const {'1': 'username', '3': 1, '4': 1, '5': 9, '10': 'username'},
+    const {'1': 'password', '3': 2, '4': 1, '5': 9, '10': 'password'},
+  ],
+};
+
+/// Descriptor for `LoginRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loginRequestDescriptor = $convert.base64Decode('CgxMb2dpblJlcXVlc3QSGgoIdXNlcm5hbWUYASABKAlSCHVzZXJuYW1lEhoKCHBhc3N3b3JkGAIgASgJUghwYXNzd29yZA==');
+@$core.Deprecated('Use loginResponseDescriptor instead')
+const LoginResponse$json = const {
+  '1': 'LoginResponse',
+  '2': const [
+    const {'1': 'user', '3': 1, '4': 1, '5': 11, '6': '.events.User', '10': 'user'},
+    const {'1': 'accessToken', '3': 2, '4': 1, '5': 9, '10': 'accessToken'},
+  ],
+};
+
+/// Descriptor for `LoginResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loginResponseDescriptor = $convert.base64Decode('Cg1Mb2dpblJlc3BvbnNlEiAKBHVzZXIYASABKAsyDC5ldmVudHMuVXNlclIEdXNlchIgCgthY2Nlc3NUb2tlbhgCIAEoCVILYWNjZXNzVG9rZW4=');

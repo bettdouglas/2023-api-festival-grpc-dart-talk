@@ -13,8 +13,8 @@ Future<GrpcError?> authInterceptor(
     ...unauthenticatedMethods,
   ];
   final metadata = call.clientMetadata ?? {};
-  final methodName = metadata[':path'];
-  if (openMethods.contains(methodName)) {
+  final methodName = metadata[':path']!;
+  if (openMethods.contains(methodName) || methodName.contains('UserService')) {
     return null;
   }
   final token = metadata['token'];
@@ -27,7 +27,6 @@ Future<GrpcError?> authInterceptor(
   }
   try {
     final claims = await decodeJwt(token);
-    print(claims);
     call.clientMetadata!.addAll(
       claims.map(
         (key, value) => MapEntry(key, value.toString()),
@@ -38,7 +37,7 @@ Future<GrpcError?> authInterceptor(
     return ServerInterceptorGrpcError(
       serviceCall: call,
       serviceMethod: method,
-      error: GrpcError.unauthenticated(),
+      error: GrpcError.unauthenticated('Supplied token is $token'),
     );
   } catch (e) {
     return ServerInterceptorGrpcError(

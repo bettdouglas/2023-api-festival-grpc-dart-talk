@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package quotes;
+
+service QuoteService {
+    rpc GetQuote (GetQuoteRequest) returns (Quote);
+    rpc StreamQuotes (StreamQuotesRequest) returns (stream Quote);
+    rpc ListQuotes (ListQuotesRequest) returns (ListQuotesResponse);
+    rpc FilterQuotes (stream FilterQuotesRequest) returns (stream FilterQuotesResponse);
+}
+
+message Quote {
+    string id = 1;
+    string text = 2;
+    string author = 3;
+}
+
+message GetQuoteRequest {}
+
+message StreamQuotesRequest {
+    int32 streamIntervalInSeconds = 1;
+}
+
+message ListQuotesRequest {
+    int32 number_of_quotes = 1;
+}
+
+message ListQuotesResponse {
+    repeated Quote quotes = 1;
+}
+
+message FilterQuotesRequest {
+    string keyword = 1;
+}
+
+message FilterQuotesResponse {
+    repeated Quote quotes = 1;
+}
