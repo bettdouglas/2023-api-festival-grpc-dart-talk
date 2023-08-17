@@ -78,6 +78,7 @@ class FilterQuotesController {
   FilterQuotesController({
     required this.quoteServiceClient,
   }) {
+    _streamController = StreamController<String>();
     final filterStream = _streamController.stream.map(
       (event) => FilterQuotesRequest(keyword: event),
     );
@@ -85,7 +86,7 @@ class FilterQuotesController {
   }
 
   final QuoteServiceClient quoteServiceClient;
-  final _streamController = StreamController<String>();
+  late StreamController _streamController;
   late Stream<FilterQuotesResponse> _quotesStream;
 
   Stream<FilterQuotesResponse> get quotesStream => _quotesStream;
@@ -105,6 +106,9 @@ final filterQuotesProvider = Provider((ref) {
 });
 
 final filteredQuotesProvider = StreamProvider<List<Quote>>((ref) {
-  final filterQuotesController = ref.watch(filterQuotesProvider);
+  final filterQuotesController = ref.read(filterQuotesProvider);
+  ref.onDispose(() {
+    filterQuotesController.dispose();
+  });
   return filterQuotesController.quotesStream.map((event) => event.quotes);
 });

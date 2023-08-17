@@ -10,8 +10,9 @@ class QuoteService extends QuoteServiceBase {
   Future<Quote> getQuote(
     ServiceCall call,
     GetQuoteRequest request,
-  ) {
-    return quotesDb.getQuote();
+  ) async {
+    Quote quote = await quotesDb.getQuote();
+    return quote;
   }
 
   @override
@@ -21,7 +22,7 @@ class QuoteService extends QuoteServiceBase {
   ) async {
     final numberOfQuotes =
         request.numberOfQuotes == 0 ? 10 : request.numberOfQuotes;
-    final randomNQuotes = await quotesDb.getNQuotes(numberOfQuotes);
+    List<Quote> randomNQuotes = await quotesDb.getNQuotes(numberOfQuotes);
     return ListQuotesResponse(quotes: randomNQuotes);
   }
 
@@ -30,13 +31,14 @@ class QuoteService extends QuoteServiceBase {
     ServiceCall call,
     StreamQuotesRequest request,
   ) {
-    final durationInSeconds = request.streamIntervalInSeconds;
-    final stream = Stream.periodic(
+    int durationInSeconds = request.streamIntervalInSeconds;
+    Stream<int> periodicStream = Stream.periodic(
       Duration(seconds: durationInSeconds),
-      (count) async => count,
+      (count) => count,
     );
-    stream.doOnCancel(() => print('Client cancelled stream'));
-    return stream.asyncMap((event) async => await quotesDb.getQuote());
+    periodicStream.doOnCancel(() => print('Client cancelled stream'));
+
+    return periodicStream.asyncMap((event) async => await quotesDb.getQuote());
   }
 
   @override
@@ -45,9 +47,11 @@ class QuoteService extends QuoteServiceBase {
     Stream<FilterQuotesRequest> request,
   ) async* {
     request.doOnCancel(() => print('Client cancelled stream'));
-    await for (var filterRequest in request) {
+    await for (FilterQuotesRequest filterRequest in request) {
       final filter = filterRequest.keyword;
-      final filteredQuotes = await quotesDb.filterQuotes(filter);
+      List<Quote> filteredQuotes = await quotesDb.filterQuotes(filter);
+
+      /// yield is used to emit a value as a response to the client
       yield FilterQuotesResponse(quotes: filteredQuotes);
     }
   }
