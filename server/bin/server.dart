@@ -9,13 +9,13 @@ void main(List<String> args) async {
   final ip = InternetAddress.anyIPv4;
   final port = int.parse(Platform.environment['PORT'] ?? '8080');
 
-  final server = Server.create(
-    services: [
-      // EventService(database: database),
-      // UserService(database: database),
-      QuoteService(),
-    ],
-  );
+  final server = Server.create(services: [
+    // EventService(database: database),
+    // UserService(database: database),
+    QuoteService(),
+  ], interceptors: [
+    loggingInterceptor
+  ]);
 
   // For running in containers, we respect the PORT environment variable.
   await server.serve(address: ip, port: port);

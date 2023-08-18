@@ -75,7 +75,7 @@ final streamQuotesProvider = StreamProvider<Quote>((ref) async* {
   );
   QuoteServiceClient client = QuoteServiceClient(channel);
   Stream<Quote> stream = client.streamQuotes(
-    StreamQuotesRequest(streamIntervalInSeconds: 4),
+    StreamQuotesRequest(streamIntervalInSeconds: 2),
   );
   await for (final quote in stream) {
     yield quote;

@@ -77,3 +77,14 @@ const FilterQuotesResponse$json = const {
 
 /// Descriptor for `FilterQuotesResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List filterQuotesResponseDescriptor = $convert.base64Decode('ChRGaWx0ZXJRdW90ZXNSZXNwb25zZRIlCgZxdW90ZXMYASADKAsyDS5xdW90ZXMuUXVvdGVSBnF1b3Rlcw==');
+@$core.Deprecated('Use favoriteQuotesResponseDescriptor instead')
+const FavoriteQuotesResponse$json = const {
+  '1': 'FavoriteQuotesResponse',
+  '2': const [
+    const {'1': 'message', '3': 1, '4': 1, '5': 9, '10': 'message'},
+    const {'1': 'favorites', '3': 2, '4': 3, '5': 11, '6': '.quotes.Quote', '10': 'favorites'},
+  ],
+};
+
+/// Descriptor for `FavoriteQuotesResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List favoriteQuotesResponseDescriptor = $convert.base64Decode('ChZGYXZvcml0ZVF1b3Rlc1Jlc3BvbnNlEhgKB21lc3NhZ2UYASABKAlSB21lc3NhZ2USKwoJZmF2b3JpdGVzGAIgAygLMg0ucXVvdGVzLlF1b3RlUglmYXZvcml0ZXM=');

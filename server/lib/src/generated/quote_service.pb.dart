@@ -336,3 +336,58 @@ class FilterQuotesResponse extends $pb.GeneratedMessage {
   $core.List<Quote> get quotes => $_getList(0);
 }
 
+class FavoriteQuotesResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FavoriteQuotesResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'quotes'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
+    ..pc<Quote>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'favorites', $pb.PbFieldType.PM, subBuilder: Quote.create)
+    ..hasRequiredFields = false
+  ;
+
+  FavoriteQuotesResponse._() : super();
+  factory FavoriteQuotesResponse({
+    $core.String? message,
+    $core.Iterable<Quote>? favorites,
+  }) {
+    final _result = create();
+    if (message != null) {
+      _result.message = message;
+    }
+    if (favorites != null) {
+      _result.favorites.addAll(favorites);
+    }
+    return _result;
+  }
+  factory FavoriteQuotesResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FavoriteQuotesResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  FavoriteQuotesResponse clone() => FavoriteQuotesResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  FavoriteQuotesResponse copyWith(void Function(FavoriteQuotesResponse) updates) => super.copyWith((message) => updates(message as FavoriteQuotesResponse)) as FavoriteQuotesResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FavoriteQuotesResponse create() => FavoriteQuotesResponse._();
+  FavoriteQuotesResponse createEmptyInstance() => create();
+  static $pb.PbList<FavoriteQuotesResponse> createRepeated() => $pb.PbList<FavoriteQuotesResponse>();
+  @$core.pragma('dart2js:noInline')
+  static FavoriteQuotesResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FavoriteQuotesResponse>(create);
+  static FavoriteQuotesResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get message => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set message($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMessage() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<Quote> get favorites => $_getList(1);
+}
+

@@ -35,6 +35,12 @@ class QuoteServiceClient extends $grpc.Client {
           ($0.FilterQuotesRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.FilterQuotesResponse.fromBuffer(value));
+  static final _$favoriteQuotes =
+      $grpc.ClientMethod<$0.Quote, $0.FavoriteQuotesResponse>(
+          '/quotes.QuoteService/FavoriteQuotes',
+          ($0.Quote value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.FavoriteQuotesResponse.fromBuffer(value));
 
   QuoteServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -63,6 +69,13 @@ class QuoteServiceClient extends $grpc.Client {
       $async.Stream<$0.FilterQuotesRequest> request,
       {$grpc.CallOptions? options}) {
     return $createStreamingCall(_$filterQuotes, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.FavoriteQuotesResponse> favoriteQuotes(
+      $async.Stream<$0.Quote> request,
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$favoriteQuotes, request, options: options)
+        .single;
   }
 }
 
@@ -101,6 +114,13 @@ abstract class QuoteServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $0.FilterQuotesRequest.fromBuffer(value),
             ($0.FilterQuotesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Quote, $0.FavoriteQuotesResponse>(
+        'FavoriteQuotes',
+        favoriteQuotes,
+        true,
+        false,
+        ($core.List<$core.int> value) => $0.Quote.fromBuffer(value),
+        ($0.FavoriteQuotesResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.Quote> getQuote_Pre(
@@ -126,4 +146,6 @@ abstract class QuoteServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.ListQuotesRequest request);
   $async.Stream<$0.FilterQuotesResponse> filterQuotes(
       $grpc.ServiceCall call, $async.Stream<$0.FilterQuotesRequest> request);
+  $async.Future<$0.FavoriteQuotesResponse> favoriteQuotes(
+      $grpc.ServiceCall call, $async.Stream<$0.Quote> request);
 }

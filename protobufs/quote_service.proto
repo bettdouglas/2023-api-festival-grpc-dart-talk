@@ -7,6 +7,7 @@ service QuoteService {
     rpc StreamQuotes (StreamQuotesRequest) returns (stream Quote);
     rpc ListQuotes (ListQuotesRequest) returns (ListQuotesResponse);
     rpc FilterQuotes (stream FilterQuotesRequest) returns (stream FilterQuotesResponse);
+    rpc FavoriteQuotes (stream Quote) returns (FavoriteQuotesResponse);
 }
 
 message Quote {
@@ -35,4 +36,13 @@ message FilterQuotesRequest {
 
 message FilterQuotesResponse {
     repeated Quote quotes = 1;
+}
+
+message FavoriteQuoteRequest {
+    repeated Quote quote = 1;
+}
+
+message FavoriteQuotesResponse {
+    string message = 1;
+    repeated Quote favorites = 2;
 }

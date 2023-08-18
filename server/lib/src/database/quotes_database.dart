@@ -7,6 +7,7 @@ import 'package:grpg_streaming/src/generated/index.dart';
 
 class QuotesDatabase {
   final _quotes = Option<List<Quote>>.none();
+  final _favorites = <String, List<Quote>>{};
 
   Future<List<Quote>> getQuotes() async {
     return _quotes.fold(
@@ -48,5 +49,14 @@ class QuotesDatabase {
       final author = quote.author.toLowerCase();
       return quoteText.contains(filter) || author.contains(filter);
     }).toList();
+  }
+
+  Future<List<Quote>> getFavorites(String userId) async {
+    return _favorites[userId] ?? [];
+  }
+
+  Future<void> addFavorite(String userId, Quote quote) async {
+    final favorites = await getFavorites(userId);
+    _favorites[userId] = [...favorites, quote];
   }
 }

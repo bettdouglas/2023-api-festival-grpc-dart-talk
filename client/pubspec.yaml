@@ -46,6 +46,7 @@ dependencies:
   json_serializable: ^6.7.1
   json_annotation: ^4.8.1
   another_flushbar: ^1.12.30
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:

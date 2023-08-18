@@ -38,7 +38,11 @@ class QuoteService extends QuoteServiceBase {
     );
     periodicStream.doOnCancel(() => print('Client cancelled stream'));
 
-    return periodicStream.asyncMap((event) async => await quotesDb.getQuote());
+    return periodicStream.asyncMap((event) async {
+      Quote quote = await quotesDb.getQuote();
+      print('Sending quote: $quote to client');
+      return quote;
+    });
   }
 
   @override
@@ -54,5 +58,24 @@ class QuoteService extends QuoteServiceBase {
       /// yield is used to emit a value as a response to the client
       yield FilterQuotesResponse(quotes: filteredQuotes);
     }
+  }
+
+  @override
+  Future<FavoriteQuotesResponse> favoriteQuotes(
+    ServiceCall call,
+    Stream<Quote> request,
+  ) async {
+    Map<String, String> headers = call.clientMetadata ?? {};
+    String? userId = headers['user_id'];
+    if (userId == null) {
+      throw GrpcError.unauthenticated('User not authenticated');
+    }
+    await for (Quote quote in request) {
+      await quotesDb.addFavorite(userId, quote);
+    }
+    List<Quote> favorites = await quotesDb.getFavorites(userId);
+    print(favorites);
+    call.trailers?.addAll({'user_id': userId});
+    return FavoriteQuotesResponse(favorites: favorites);
   }
 }
