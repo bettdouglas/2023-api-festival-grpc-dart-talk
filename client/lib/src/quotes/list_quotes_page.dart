@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:grpc/service_api.dart';
+import 'package:grpc_streaming/src/quotes/get_quotes_page.dart';
 import 'package:grpc_streaming/src/shared/grpc-gen/index.dart';
 import 'package:grpc_streaming/src/shared/service_client_providers.dart';
 import 'package:grpc_streaming/src/shared/widgets/error_message_widget.dart';
@@ -20,16 +21,17 @@ class ListQuotesPage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Quotes List'),
       ),
-      body: quotesAsyncValue.map(
-        data: (data) => Column(
+      body: quotesAsyncValue.when(
+        data: (quotes) => Column(
           children: [
             Expanded(
               child: QuotesListView(
-                quotes: data.value,
+                quotes: quotes,
                 onQuoteFavorited: (quote) {
                   ref
                       .read(userFavoritesSubjectProvider.notifier)
                       .favorite(quote);
+                  ref.read(bookmarkedQuotesProvider.notifier).addQuote(quote);
                   print('Favorited');
                 },
               ),
@@ -56,11 +58,11 @@ class ListQuotesPage extends ConsumerWidget {
             ),
           ],
         ),
-        error: (error) => ErrorMessageWidgetWithRetry(
+        error: (error, _) => ErrorMessageWidgetWithRetry(
           error.toString(),
           onRetry: () => ref.invalidate(quotesProvider),
         ),
-        loading: (_) => const Center(
+        loading: () => const Center(
           child: CircularProgressIndicator.adaptive(),
         ),
       ),

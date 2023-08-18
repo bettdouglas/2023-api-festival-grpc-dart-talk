@@ -1,7 +1,5 @@
-import 'package:build_grpc_channel/build_grpc_channel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:grpc/service_api.dart';
 import 'package:grpc_streaming/src/shared/grpc-gen/index.dart';
 import 'package:grpc_streaming/src/shared/service_client_providers.dart';
 import 'package:grpc_streaming/src/shared/widgets/error_message_widget.dart';
@@ -68,11 +66,7 @@ class StreamQuotesPage extends ConsumerWidget {
 }
 
 final streamQuotesProvider = StreamProvider<Quote>((ref) async* {
-  ClientChannel channel = buildGrpcChannel(
-    host: host,
-    port: port,
-    secure: false,
-  );
+  final channel = ref.read(channelProvider);
   QuoteServiceClient client = QuoteServiceClient(channel);
   Stream<Quote> stream = client.streamQuotes(
     StreamQuotesRequest(streamIntervalInSeconds: 2),

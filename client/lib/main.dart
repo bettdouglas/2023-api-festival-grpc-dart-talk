@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:grpc_streaming/src/quotes/bookmarked_quotes_page.dart';
 import 'package:grpc_streaming/src/quotes/filter_quotes_page.dart';
 import 'package:grpc_streaming/src/quotes/get_quotes_page.dart';
 import 'package:grpc_streaming/src/quotes/list_quotes_page.dart';
@@ -38,26 +39,48 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('gRPC Demo'),
-          bottom: const TabBar(
-            tabs: [
-              Tab(
-                text: 'Unary Call',
-              ),
-              Tab(
-                text: 'Client Streaming',
-              ),
-              Tab(
-                text: 'Server Streaming',
-              ),
-              Tab(
-                text: 'Bidirectional Streaming',
-              ),
-            ],
-          ),
+          // bottom: const TabBar(
+          //   tabs: [
+          //     Tab(
+          //       text: 'Unary Call',
+          //     ),
+          //     Tab(
+          //       text: 'Client Streaming',
+          //     ),
+          //     Tab(
+          //       text: 'Server Streaming',
+          //     ),
+          //     Tab(
+          //       text: 'Bidirectional Streaming',
+          //     ),
+          //     Tab(
+          //       text: 'Bookmarked Quotes',
+          //     ),
+          //   ],
+          // ),
+        ),
+        bottomNavigationBar: const TabBar(
+          tabs: [
+            Tab(
+              text: 'Unary Call',
+            ),
+            Tab(
+              text: 'Client Streaming',
+            ),
+            Tab(
+              text: 'Server Streaming',
+            ),
+            Tab(
+              text: 'Bidirectional Streaming',
+            ),
+            Tab(
+              text: 'Bookmarked Quotes',
+            ),
+          ],
         ),
         body: const TabBarView(
           children: [
@@ -65,6 +88,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             ListQuotesPage(),
             StreamQuotesPage(),
             FilterQuotesPage(),
+            BookmarkedQuotesPage(),
           ],
         ),
       ),

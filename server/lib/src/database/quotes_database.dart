@@ -31,7 +31,11 @@ class QuotesDatabase {
   }
 
   Future<List<Quote>> _fetchQuotes() async {
-    final fileContents = await File('quotes.json').readAsString();
+    final quotesFile = File('quotes.json');
+    if (!(await quotesFile.exists())) {
+      throw Exception('Quotes file not found');
+    }
+    final fileContents = await quotesFile.readAsString();
     final quotes = json.decode(fileContents) as List;
     return quotes.map((e) {
       return Quote(

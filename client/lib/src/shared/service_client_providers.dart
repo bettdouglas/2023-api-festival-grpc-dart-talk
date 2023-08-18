@@ -5,16 +5,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grpc_streaming/src/shared/grpc-gen/index.dart';
 import 'package:grpc_streaming/src/shared/user_token_interceptor.dart';
 
-const host = 'http://localhost';
+// const host = 'http://localhost';
 // const _proxy = 'https://meo-lab-grpc-proxy-server-oentpvkuua-oa.a.run.app';
-const port = 8080;
 
-final devChannelProvider = Provider((ref) {
-  return buildGrpcChannel(host: 'http://localhost', port: 8080, secure: false);
-});
+// final devChannelProvider = Provider((ref) {
+//   return buildGrpcChannel(host: 'http://localhost', port: 8080, secure: false);
+// });
 
 final channelProvider = Provider((ref) {
-  return buildGrpcChannel(host: host, port: port, secure: false);
+  const host = 'https://quotes-grpc-service-of5ogbihaa-oa.a.run.app';
+  const port = 443;
+
+  return buildGrpcChannel(host: host, port: port, secure: true);
 });
 
 final userServiceClientProvider = Provider<UserServiceClient>((ref) {

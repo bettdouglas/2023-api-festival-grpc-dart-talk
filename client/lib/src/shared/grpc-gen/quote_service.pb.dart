@@ -336,6 +336,47 @@ class FilterQuotesResponse extends $pb.GeneratedMessage {
   $core.List<Quote> get quotes => $_getList(0);
 }
 
+class FavoriteQuoteRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FavoriteQuoteRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'quotes'), createEmptyInstance: create)
+    ..pc<Quote>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'quote', $pb.PbFieldType.PM, subBuilder: Quote.create)
+    ..hasRequiredFields = false
+  ;
+
+  FavoriteQuoteRequest._() : super();
+  factory FavoriteQuoteRequest({
+    $core.Iterable<Quote>? quote,
+  }) {
+    final _result = create();
+    if (quote != null) {
+      _result.quote.addAll(quote);
+    }
+    return _result;
+  }
+  factory FavoriteQuoteRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FavoriteQuoteRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  FavoriteQuoteRequest clone() => FavoriteQuoteRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  FavoriteQuoteRequest copyWith(void Function(FavoriteQuoteRequest) updates) => super.copyWith((message) => updates(message as FavoriteQuoteRequest)) as FavoriteQuoteRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FavoriteQuoteRequest create() => FavoriteQuoteRequest._();
+  FavoriteQuoteRequest createEmptyInstance() => create();
+  static $pb.PbList<FavoriteQuoteRequest> createRepeated() => $pb.PbList<FavoriteQuoteRequest>();
+  @$core.pragma('dart2js:noInline')
+  static FavoriteQuoteRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FavoriteQuoteRequest>(create);
+  static FavoriteQuoteRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<Quote> get quote => $_getList(0);
+}
+
 class FavoriteQuotesResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FavoriteQuotesResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'quotes'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
